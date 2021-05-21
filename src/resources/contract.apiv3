@@ -1,0 +1,12 @@
+{ 
+    "date": 0,
+    "vendor_email": "omathieu@calindasoftware.com",
+    "customer_number":"",
+    "contract_definition_id" : 0 ,
+    "closed": false,
+    "customer_entity_id" : -1,  
+    "keep_on_move": false, 
+    "message_title" : "Votre contrat est prêt à signer", 
+    "message_body": "Voici votre contrat prêt à signer",
+    "filename":"contrat_de_travail_cci_bayonne.pdf"
+}

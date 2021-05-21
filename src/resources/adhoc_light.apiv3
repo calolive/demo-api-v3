@@ -1,0 +1,53 @@
+{
+    "customer": {
+        "number": "mycustomer65778", // l'identifiant de votre client, le destinataire du contrat 
+        "mode": 3, // le mode de signature: 3 à distance (envoie d'un email pour la demande de saisie OTP)
+        "contractor_id": -1,
+        "vendor": "vendor_adress_email@calindasoftware.com",
+        "fields": [{
+                "key": "firstname",
+                "value": "test"
+            },
+            {
+                "key": "lastname",
+                "value": "Dupont"
+            },
+            {
+                "key": "civility",
+                "value": "MONSIEUR" // MONSIEUR ou MADAME
+            },
+            {
+                "key": "email",
+                "value": "test4814@calindasoftware.com" // pour tester, vous pouvez mettre votre adresse email ici
+            },
+            {
+                "key": "cellPhone",
+                "value": "0606060606" // pour tester, vous pouvez mettre votre numéro de téléphone ici
+            }
+        ]
+    },
+    "contractors": [],
+    "contract": {
+        "contract_definition_id": 15262, // !!!ATTENTION!!! cet identifiant dépend de votre déploiement et vous est fourni avec votre document descriptif de votre API.
+                                      // Il permet d'identifier le type de contrat qui est utilisé et d'y accrocher des comportements (par exemple les callbacks sur cloture d'un contrat)
+        "pdf_file_path": "my_contract.pdf", // le nom du fichier pdf tel qu'il est donné dans le paquet http      
+        "contract_id": -1,
+		    "message_title": "Votre contrat Z pour signature",
+		    "message_body": "Vous êtes signataire du contrat Z ci-joint pour la {{companyName}}. Merci de bien vouloir le signer électroniquement en cliquant sur le lien ci-dessous.<br>Cordialement,"		
+    },
+    "contract_properties": [
+    {
+        "key": "internal_contract_id", // une clé pour votre identifiant interne du contrat, la valeur pourra vous être donné lors du retour du fichier signé
+        "value": "ma valeur", // la valeur de la clé
+        "to_fill_by_user": 0
+    },
+    {
+      "key": "callback:url",
+      "value":"https://mycustomer.com/callback_pdf/<id>"
+    }
+    ],
+    "files": [],
+    "options": [],
+
+    "to_sign": 1 // Pour déclencher l'émission de l'email 
+}
