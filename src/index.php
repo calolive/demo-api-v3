@@ -1,6 +1,6 @@
 <?php
             session_start();
-            $_SESSION['base_url'] = "https://betaqacss.calindasoftware.com";
+            $_SESSION['base_url'] = "https://betacloud.sellandsign.com";
             $_SESSION['token'] = "";
             $_SESSION['cdi'] = 0;
 ?>
