@@ -23,9 +23,17 @@ alternatively, you can clone only the needed branch
 
 ### Docker ###
 
+If you want to run the demo in a container, Docker Desktop must be installed on your machine
+
 The project contains a minimal dockerfile with a php7+apache base image so that you can launch the demo behind an Apache web server in a container.
 
-If you want to run the demo in a container, Docker Desktop must be installed on your machine
+There is also a docker compose file with a volume that maps ./php/src on the local host to /var/www/html in the container, so that he changes made locally to the code are propagated to the container.
+
+To see your changes, just refresh the app web page.
+
+To launch the container type
+
+* docker-compose up
 
 ### Demo application usage ###
 
