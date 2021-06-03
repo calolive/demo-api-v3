@@ -1,9 +1,9 @@
 <?php
             session_start();
-            $_SESSION['base_url'] = "";
-            $_SESSION['token'] = "";
-            $_SESSION['cdi'] = ;
-            $_SESSION['contractor_id'] = ;
+            $_SESSION['base_url'] = "https://betacloud.sellandsign.com";
+            $_SESSION['token'] = "TSRSSBX|/ZzL2clktVntIpEBN5kZikFQmG/+WOkLL8zaNJeaLVU=";
+            $_SESSION['cdi'] = 25697;
+            $_SESSION['contractor_id'] = 1144118;
             
 ?>
 <!DOCTYPE html>
@@ -29,14 +29,23 @@
         <script>
             var infos = null;
 
+            window.addEventListener("message", function(message) {
+                if (message && message.data) {
+                    const data = JSON.parse(message.data);
+                    console.log(data);
+                    const iframe = document.getElementById('iframediv');
+                    iframe.innerHTML = "";
+                }
+            }, false);
+
             function send_request(endpoint) {
                 var objXMLHttpRequest = new XMLHttpRequest();
                 objXMLHttpRequest.onreadystatechange = function() {
                     if(objXMLHttpRequest.readyState === 4) {
                         if(objXMLHttpRequest.status === 200) {    
                             console.log(objXMLHttpRequest.responseText);                     
-                            let myjson = JSON.parse(objXMLHttpRequest.responseText);
-                            let iframe = document.getElementById('iframediv');
+                            const myjson = JSON.parse(objXMLHttpRequest.responseText);
+                            const iframe = document.getElementById('iframediv');
                             let message = document.getElementById('messagediv');
 
                             if (endpoint === 'get-signed-contract') {
@@ -65,11 +74,11 @@
             }
 
             function disp_sign_iframe() {
-                let message = document.getElementById('messagediv');
-                let iframe = document.getElementById('iframediv');
+                const message = document.getElementById('messagediv');
+                const iframe = document.getElementById('iframediv');
                 message.innerHTML = "";
-                let encoded = encodeURIComponent(infos.token);
-                let url = `https://betacloud.sellandsign.com/calinda/s/generic_sign_contract_index.html?l_id=14671&direct_contract=${infos.cdi}&cd_id=${infos.cdi}&c_id=${infos.contract_id}&customer_number=${infos.customer_id}&page=1&no_ui=true&j_token=${encoded}`;                              
+                const encoded = encodeURIComponent(infos.token);
+                const url = `https://betacloud.sellandsign.com/calinda/s/generic_sign_contract_index.html?l_id=14671&direct_contract=${infos.cdi}&cd_id=${infos.cdi}&c_id=${infos.contract_id}&customer_number=${infos.customer_id}&page=1&no_ui=true&j_token=${encoded}`;                              
                 iframe.innerHTML = `<iframe width="1024" height="800" src="${url}"></iframe>`;
             }
         </script>
