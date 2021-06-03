@@ -6,4 +6,4 @@ services:
       - '80:80'
     working_dir: /root/php
     volumes:
-      - ./php/src:/var/www/html:cached # <--- This will map ./php to /root/php inside the container.
+      - ./php/src:/var/www/html:cached # <--- This will map ./php to /var/www/html inside the container.

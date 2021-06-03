@@ -8,14 +8,17 @@ session_start();
 $base_url = $_SESSION['base_url'];
 $token = $_SESSION['token'];
 $cdi = $_SESSION['cdi'];
+$contractor_id = $_SESSION['contractor_id'];
 
 $client = new Client([
     // You can set any number of default request options.
     'timeout'  => 30.0,
 ]);
 
-$scp_obj = json_decode(file_get_contents(__dir__.'/resources/sendcommandpacket.sellsign', true), false);
+$scp_obj = json_decode(file_get_contents(__dir__.'/resources/sendcommandpacket.apiv3', true), false);
 $scp_obj->contract->contract_definition_id = $cdi;
+$scp_obj->contractors[0]->id = $contractor_id;
+
 try {
 //SendCommanPacket ------------------------------------------------------
 //Méthode à privilégier par rapport à la méthoe étape par étape - demande beaucoup moins de travail
@@ -47,7 +50,8 @@ try {
 
     $resp_obj = json_decode($resp_scp->getBody()->getContents());
     $_SESSION['contract_id'] = $resp_obj->contract_id;
-    $resp_json = array('code' => $resp_scp->getStatusCode(), 'response' => "contract created with id $resp_obj->contract_id");
+    $_SESSION['customer_id'] = $resp_obj->customer_number;
+    $resp_json = array('code' => $resp_scp->getStatusCode(), 'response' => "contract created with id $resp_obj->contract_id and customer $resp_obj->customer_number");
     echo json_encode($resp_json);
 }
 catch (RequestException $e) {
