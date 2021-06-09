@@ -11,14 +11,15 @@ $cdi = $_SESSION['cdi'];
 $contract_id = $_SESSION['contract_id'];
 $contractor_id = $_SESSION['contractor_id'];
 $customer_id = $_SESSION['customer_id'];
+$actor_id = $_SESSION['actor_id'];
 
 $client = new Client([
-    // You can set any number of default request options.
+    // You can set any number of default request options.s
     'timeout'  => 30.0,
 ]);
 
 $ct_obj = json_decode(file_get_contents(__dir__.'/resources/create-token.apiv3', true), false);
-$ct_obj->actorId = 606733;
+$ct_obj->actorId = $actor_id;
 $ct_obj->time = round(microtime(true) * 1000) + 3000000;
 $ct_obj->parameters->contract_definition_id = $cdi;
 $ct_obj->parameters->contract_id = $contract_id;

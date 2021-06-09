@@ -2,8 +2,48 @@
     "contractors": [
 		{
 			"mode": 9,
-			"id": 17906
-		}
+			"id": 17906,
+			"fields": [{
+				"key": "firstname",
+				"value": "léon"
+			}]
+		},
+		{
+			"mode" : 9,
+			"id" : -1,
+			"fields" : [{
+				"key" : "firstname",
+				"value" : "Test"
+			},
+			{
+				"key" : "lastname",
+				"value" : "Martin"
+			},
+			{
+				"key" : "address1",
+				"value" : "1"
+			},
+			{
+				"key" : "postalCode",
+				"value" : "10000"
+			},
+			{
+				"key" : "city",
+				"value" : "M"
+			},
+			{
+				"key" : "country",
+				"value" : "M"
+			},	
+			{
+				"key" : "email",
+				"value" : "omathieu+669@calindasoftware.com"
+			},
+			{
+				"key" : "cellPhone",
+				"value" : "0662370619"
+			}]
+    	}
 	],
     "contract": {
         "contract_definition_id": 1911,
